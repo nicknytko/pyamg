@@ -7,6 +7,7 @@
 #include <limits>
 #include <vector>
 #include <iostream>
+#include <cmath>>
 
 // Usage
 // printv(d, d_size, "d");
@@ -799,7 +800,8 @@ bool bellman_ford_balanced(const I num_nodes,
     }
 
     // safety check, regular unweighted BF is actually O(|V|.|E|)
-    if (++iter > num_nodes*num_nodes){
+    ++iter;
+    if (static_cast<I>(std::sqrt(static_cast<double>(iter))) > num_nodes){
       throw std::runtime_error("pyamg-error (amg_core) -- too many iterations!");
     }
   } while(!done);
